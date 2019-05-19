@@ -20,22 +20,24 @@ public class NaDownloadManager {
         return queue
     }()
     let imageCache = NSCache<NSString, UIImage>()
-    static let shared = NaDownloadManager()
+//    static let shared = NaDownloadManager()
     
-    private init() {}
+    init() {}
     
-    func downloadImage(_ imageUrl: String, completion: @escaping ImageDownloadHandler) {
+    func downloadImage(_ imageUrl: String, completion: @escaping ImageDownloadHandler) -> Operation? {
         self.completionHandler = completion
         guard let url = URL.init(string: imageUrl) else {
-            return
+            return nil
         }
         
         if let cachedImage = imageCache.object(forKey: url.absoluteString as NSString) {
             self.completionHandler?(cachedImage, url, nil)
+            return nil
         } else {
             if let operationList = (downloadQueue.operations as? [NaOperation])?.filter({$0.imageUrl.absoluteString == url.absoluteString && $0.isFinished == false && $0.isExecuting == true}), let operation = operationList.first {
                 print("In progress url: " + url.absoluteString)
                 operation.queuePriority = .veryHigh
+                return operation
             } else {
                 let operation = NaOperation.init(url: URL.init(string: imageUrl)!)
                 operation.downloadHandler = { (image, url, error) in
@@ -45,6 +47,7 @@ public class NaDownloadManager {
                     self.completionHandler?(image, url, error)
                 }
                 downloadQueue.addOperation(operation)
+                return operation
             }
         }
     }

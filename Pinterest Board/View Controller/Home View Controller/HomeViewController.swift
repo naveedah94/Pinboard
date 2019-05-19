@@ -13,12 +13,6 @@ class HomeViewController: UIViewController {
     private var dataArray: NSArray = NSMutableArray()
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var photos:[PhotoModel] = []
-    var photoReference: [String] = []
-    var completedReference: [String] = []
-    
-    lazy var fetcher = ImagePreFetcher.init()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -57,13 +51,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.dataArray.count
+        return 50
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! PinBoardCollectionViewCell
         
         cell.backgroundColor = UIColor.darkGray
+        cell.imageView.loadImage(fromUrl: "https://images.unsplash.com/profile-1464495186405-68089dcd96c3?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=32&w=32&s=63f1d805cffccb834cf839c719d91702")
         
         return cell
     }

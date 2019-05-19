@@ -10,4 +10,5 @@ import UIKit
 
 class PinBoardCollectionViewCell: UICollectionViewCell {
     
+    @IBOutlet weak var imageView: UIImageView!
 }
