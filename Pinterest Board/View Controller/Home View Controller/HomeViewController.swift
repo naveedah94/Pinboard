@@ -70,8 +70,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let item = dashboardArray[indexPath.row]
         
         cell.backgroundColor = UIColor.init(hexString: item.color!)
-        cell.imageUrl = (item.urls?.thumb)!
-//        cell.imageView.loadImage(fromUrl: (item.urls?.thumb)!)
+        NaImageDownloader.init().loadImage(fromUrl: (item.urls?.thumb)!, atIndexPath: indexPath) { (image, url, error, indexPath) in
+            if image != nil {
+                if let cell = collectionView.cellForItem(at: indexPath!) as? PinBoardCollectionViewCell {
+                    cell.imageView.image = image
+                }
+            }
+        }
         
         return cell
     }

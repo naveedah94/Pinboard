@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-typealias ImageDownloadHandler = (_ image: UIImage?, _ fromUrl: URL, _ error: Error?) -> Void
+typealias ImageDownloadHandler = (_ image: UIImage?, _ fromUrl: URL, _ error: Error?, _ indexPath: IndexPath?) -> Void
 
 public class NaDownloadManager {
     
@@ -35,13 +35,13 @@ public class NaDownloadManager {
         return self.maximumCacheSize
     }
     
-    func downloadImage(_ imageUrl: String, completion: @escaping ImageDownloadHandler) -> Operation? {
+    func downloadImage(_ imageUrl: String, _ indexPath: IndexPath?, completion: @escaping ImageDownloadHandler) -> Operation? {
         self.completionHandler = completion
         guard let url = URL.init(string: imageUrl) else {
             return nil
         }
         
-        if let cachedImage = self.getImageFromCache(url.absoluteString as NSString) {                self.completionHandler?(cachedImage.image, url, nil)
+        if let cachedImage = self.getImageFromCache(url.absoluteString as NSString) {                self.completionHandler?(cachedImage.image, url, nil, indexPath)
             return nil
         } else {
             if let operationList = (downloadQueue.operations as? [NaOperation])?.filter({$0.imageUrl.absoluteString == url.absoluteString && $0.isFinished == false && $0.isExecuting == true}), let operation = operationList.first {
@@ -49,12 +49,12 @@ public class NaDownloadManager {
                 operation.queuePriority = .veryHigh
                 return operation
             } else {
-                let operation = NaOperation.init(url: URL.init(string: imageUrl)!)
-                operation.downloadHandler = { (image, url, error) in
+                let operation = NaOperation.init(url: URL.init(string: imageUrl)!, indexPath: indexPath)
+                operation.downloadHandler = { (image, url, error, indexPath) in
                     if let mImage = image {
                         self.addImageToCache(mImage, url.absoluteString as NSString)
                     }
-                    self.completionHandler?(image, url, error)
+                    self.completionHandler?(image, url, error, indexPath)
                 }
                 downloadQueue.addOperation(operation)
                 return operation

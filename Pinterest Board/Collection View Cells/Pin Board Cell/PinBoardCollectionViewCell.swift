@@ -10,31 +10,33 @@ import UIKit
 
 class PinBoardCollectionViewCell: UICollectionViewCell {
     
-    let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = nil
-        imageView.layer.cornerRadius = 0
-        imageView.clipsToBounds = true
-        return imageView
-    }()
+    @IBOutlet weak var imageView: UIImageView!
     
-    var imageUrl: String? {
-        didSet {
-            imageView.loadImage(fromUrl: imageUrl!)
-        }
-    }
-    
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
-    }
-    
-    func setupViews() {
-        imageView.frame = self.frame
-        addSubview(imageView)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    let imageView: UIImageView = {
+//        let imageView = UIImageView()
+//        imageView.image = nil
+//        imageView.layer.cornerRadius = 0
+//        imageView.clipsToBounds = true
+//        return imageView
+//    }()
+//
+//    var imageUrl: String? {
+//        didSet {
+//            imageView.loadImage(fromUrl: imageUrl!)
+//        }
+//    }
+//
+//    public override init(frame: CGRect) {
+//        super.init(frame: frame)
+//        setupViews()
+//    }
+//
+//    func setupViews() {
+//        imageView.frame = self.frame
+//        addSubview(imageView)
+//    }
+//
+//    required init?(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//    }
 }

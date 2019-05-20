@@ -13,6 +13,7 @@ class NaOperation: Operation {
     
     var downloadHandler: ImageDownloadHandler?
     var imageUrl: URL!
+    var indexPath: IndexPath?
     
     override var isAsynchronous: Bool {
         get {
@@ -55,8 +56,9 @@ class NaOperation: Operation {
         mFinished = finished
     }
     
-    required init(url: URL) {
+    required init(url: URL, indexPath: IndexPath?) {
         self.imageUrl = url
+        self.indexPath = indexPath
     }
     
     override func main() {
@@ -75,7 +77,7 @@ class NaOperation: Operation {
         let downloadTask = session.downloadTask(with: self.imageUrl) { (url, response, error) in
             if let mUrl = url, let data = try? Data.init(contentsOf: mUrl) {
                 let image = UIImage.init(data: data)
-                self.downloadHandler?(image, self.imageUrl, error)
+                self.downloadHandler?(image, self.imageUrl, error, self.indexPath)
             }
             self.finish(true)
             self.executing(false)

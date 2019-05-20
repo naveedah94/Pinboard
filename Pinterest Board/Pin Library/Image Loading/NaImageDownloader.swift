@@ -8,8 +8,11 @@
 
 import UIKit
 
-extension UIImageView {
+typealias NaDownloadHandler = (_ image: UIImage?, _ fromUrl: URL, _ error: Error?, _ indexPath: IndexPath?) -> Void
 
+
+class NaImageDownloader {
+    
     private struct PropertyHolder {
         static var operation: Operation?
     }
@@ -23,21 +26,22 @@ extension UIImageView {
         }
     }
     
-    func loadImage(fromUrl url: String) {
-        let operation = NaDownloadManager.shared.downloadImage(url) { [weak self] (image, url, error) in
-            if error == nil {
-                if let img = image {
-                    self!.setDownloadedImage(img)
-                }
+    func loadImage(fromUrl url: String, completion: @escaping NaDownloadHandler) {
+        let operation = NaDownloadManager.shared.downloadImage(url, nil) { (image, url, error, indexPath) in
+            DispatchQueue.main.async {
+                 completion(image, url, error, nil)
             }
         }
         self.imageDownloadOperation = operation
     }
     
-    func setDownloadedImage(_ image: UIImage) {
-        DispatchQueue.main.sync {
-            self.image = image
+    func loadImage(fromUrl url: String, atIndexPath indexPath: IndexPath, completion: @escaping NaDownloadHandler) {
+        let operation = NaDownloadManager.shared.downloadImage(url, indexPath) { (image, url, error, mIndexPath) in
+            DispatchQueue.main.async {
+                completion(image, url, error, mIndexPath)
+            }
         }
+        self.imageDownloadOperation = operation
     }
     
     func cancelLoad() {
