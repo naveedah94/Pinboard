@@ -24,10 +24,10 @@ extension UIImageView {
     }
     
     func loadImage(fromUrl url: String) {
-        let operation = NaDownloadManager.shared.downloadImage(url) { (image, url, error) in
+        let operation = NaDownloadManager.shared.downloadImage(url) { [weak self] (image, url, error) in
             if error == nil {
                 if let img = image {
-                    self.setDownloadedImage(img)
+                    self!.setDownloadedImage(img)
                 }
             }
         }
@@ -35,7 +35,7 @@ extension UIImageView {
     }
     
     func setDownloadedImage(_ image: UIImage) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.sync {
             self.image = image
         }
     }

@@ -10,25 +10,32 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-    private var dataArray: NSArray = NSMutableArray()
+    private var dashboardArray: [GetDashboardModel] = []
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.setupCollectionView()
         self.getBoardDataFromService()
     }
     
     func getBoardDataFromService() {
-        let jsonData = self.readjson(fileName: "data")
-        let jsonResult = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableLeaves)
-        if let jsonResult = jsonResult as? NSArray {
-           print(jsonResult)
-            self.dataArray = jsonResult
-            self.loadCollectionView()
+        NaNetworking.shared.createRequest(nil, .get
+        , .urlEncoding, "http://pastebin.com/raw/wgkJgazE") { (data, response, error) in
+            if error == nil {
+                if let mData = data, let json = NaNetworking.shared.getJson(from: mData) {
+                    print(json)
+                    self.dashboardArray = try! JSONDecoder().decode([GetDashboardModel].self, from: mData)
+                    self.collectionView.reloadData()
+                } else {
+                    print("Failed")
+                }
+            } else {
+                print(error?.localizedDescription)
+            }
         }
-        print("Oops failed")
     }
     
     func readjson(fileName: String) -> Data {
@@ -38,33 +45,48 @@ class HomeViewController: UIViewController {
         return jsonData!
     }
     
-    func loadCollectionView() {
+    func setupCollectionView() {
+        if let layout =  self.collectionView.collectionViewLayout as? PinboardCollectionViewLayout {
+            layout.delegate = self
+        }
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
     }
 }
 
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, PinboardLayoutDelegate {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+        return self.dashboardArray.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! PinBoardCollectionViewCell
         
-        cell.backgroundColor = UIColor.darkGray
-        cell.imageView.loadImage(fromUrl: "https://images.unsplash.com/profile-1464495186405-68089dcd96c3?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=32&w=32&s=63f1d805cffccb834cf839c719d91702")
+        let item = dashboardArray[indexPath.row]
+        
+        cell.backgroundColor = UIColor.init(hexString: item.color!)
+        cell.imageUrl = (item.urls?.thumb)!
+//        cell.imageView.loadImage(fromUrl: (item.urls?.thumb)!)
         
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize.init(width: (self.collectionView.frame.size.width / 2) - 4, height: (self.collectionView.frame.size.width / 2) - 4)
+    func collectionView(_ collectionView: UICollectionView, heightForItemAtIndexPath indexPath: IndexPath) -> CGFloat {
+        let width = (self.collectionView.frame.size.width / 2) - 4
+        
+        let item = dashboardArray[indexPath.row]
+        let itemWidth = Double(item.width!)
+        let itemHeight = Double(item.height!)
+        
+        let height = CGFloat((itemHeight / itemWidth)) * width
+        
+        
+        return height
     }
 
 }

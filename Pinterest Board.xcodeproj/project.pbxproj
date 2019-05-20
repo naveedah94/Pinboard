@@ -15,16 +15,20 @@
 		1D045ACF229167D7009225C6 /* Pinterest_BoardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D045ACE229167D7009225C6 /* Pinterest_BoardUITests.swift */; };
 		1D045AE222916C30009225C6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D045AE122916C30009225C6 /* HomeViewController.swift */; };
 		1D045AE522916C7A009225C6 /* PinboardCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D045AE422916C7A009225C6 /* PinboardCollectionViewLayout.swift */; };
-		1D045AEC22917050009225C6 /* ImagePreFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D045AEB22917050009225C6 /* ImagePreFetcher.swift */; };
-		1D045AEE229170E2009225C6 /* ImagePreFetchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D045AED229170E2009225C6 /* ImagePreFetchOperation.swift */; };
-		1D045AF022917361009225C6 /* ImagePreFetcherParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D045AEF22917361009225C6 /* ImagePreFetcherParser.swift */; };
 		1D045AF4229176D9009225C6 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 1D045AF3229176D9009225C6 /* data.json */; };
 		1D045AF822917A3F009225C6 /* PinBoardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D045AF722917A3F009225C6 /* PinBoardCollectionViewCell.swift */; };
 		1D045AFC22917E08009225C6 /* GetDashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D045AFB22917E08009225C6 /* GetDashboardModel.swift */; };
 		1D045AFF2291CA98009225C6 /* NaImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D045AFE2291CA98009225C6 /* NaImageDownloader.swift */; };
 		1D045B012291DCC9009225C6 /* NaDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D045B002291DCC9009225C6 /* NaDownloadManager.swift */; };
-		1D045B032291EC28009225C6 /* OperationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D045B022291EC28009225C6 /* OperationsManager.swift */; };
 		1D045B052291EEF7009225C6 /* NaImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D045B042291EEF7009225C6 /* NaImageOperation.swift */; };
+		1D045B092292F0D0009225C6 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D045B062292F0D0009225C6 /* HTTPMethod.swift */; };
+		1D045B0A2292F0D0009225C6 /* NaNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D045B072292F0D0009225C6 /* NaNetworking.swift */; };
+		1D045B0B2292F0D0009225C6 /* DiscardableImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D045B082292F0D0009225C6 /* DiscardableImageItem.swift */; };
+		1D045B0D2292F13E009225C6 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D045B0C2292F13E009225C6 /* ParameterEncoding.swift */; };
+		1D045B0F2292F1A2009225C6 /* ParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D045B0E2292F1A2009225C6 /* ParameterEncoder.swift */; };
+		1D045B11229323A1009225C6 /* NaUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D045B10229323A1009225C6 /* NaUtils.swift */; };
+		1D045B1322932934009225C6 /* NaNetworkOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D045B1222932934009225C6 /* NaNetworkOperation.swift */; };
+		1D045B1622933459009225C6 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D045B1522933459009225C6 /* Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,16 +63,20 @@
 		1D045AD0229167D7009225C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1D045AE122916C30009225C6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		1D045AE422916C7A009225C6 /* PinboardCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinboardCollectionViewLayout.swift; sourceTree = "<group>"; };
-		1D045AEB22917050009225C6 /* ImagePreFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreFetcher.swift; sourceTree = "<group>"; };
-		1D045AED229170E2009225C6 /* ImagePreFetchOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreFetchOperation.swift; sourceTree = "<group>"; };
-		1D045AEF22917361009225C6 /* ImagePreFetcherParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreFetcherParser.swift; sourceTree = "<group>"; };
 		1D045AF3229176D9009225C6 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		1D045AF722917A3F009225C6 /* PinBoardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinBoardCollectionViewCell.swift; sourceTree = "<group>"; };
 		1D045AFB22917E08009225C6 /* GetDashboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDashboardModel.swift; sourceTree = "<group>"; };
 		1D045AFE2291CA98009225C6 /* NaImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaImageDownloader.swift; sourceTree = "<group>"; };
 		1D045B002291DCC9009225C6 /* NaDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaDownloadManager.swift; sourceTree = "<group>"; };
-		1D045B022291EC28009225C6 /* OperationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationsManager.swift; sourceTree = "<group>"; };
 		1D045B042291EEF7009225C6 /* NaImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaImageOperation.swift; sourceTree = "<group>"; };
+		1D045B062292F0D0009225C6 /* HTTPMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HTTPMethod.swift; path = "Pinterest Board/Pin Library/Image Loading/HTTPMethod.swift"; sourceTree = SOURCE_ROOT; };
+		1D045B072292F0D0009225C6 /* NaNetworking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NaNetworking.swift; path = "Pinterest Board/Pin Library/Image Loading/NaNetworking.swift"; sourceTree = SOURCE_ROOT; };
+		1D045B082292F0D0009225C6 /* DiscardableImageItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiscardableImageItem.swift; path = "Pinterest Board/Pin Library/Image Loading/DiscardableImageItem.swift"; sourceTree = SOURCE_ROOT; };
+		1D045B0C2292F13E009225C6 /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
+		1D045B0E2292F1A2009225C6 /* ParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoder.swift; sourceTree = "<group>"; };
+		1D045B10229323A1009225C6 /* NaUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaUtils.swift; sourceTree = "<group>"; };
+		1D045B1222932934009225C6 /* NaNetworkOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNetworkOperation.swift; sourceTree = "<group>"; };
+		1D045B1522933459009225C6 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +127,7 @@
 		1D045AAD229167D3009225C6 /* Pinterest Board */ = {
 			isa = PBXGroup;
 			children = (
+				1D045B142293344D009225C6 /* Utils */,
 				1D045AF922917DF7009225C6 /* Models */,
 				1D045AF522917A21009225C6 /* Collection View Cells */,
 				1D045ADF22916C0F009225C6 /* App Delegate */,
@@ -173,7 +182,6 @@
 			children = (
 				1D045AE822916FEA009225C6 /* Webservice Client */,
 				1D045AE722916FE3009225C6 /* Image Loading */,
-				1D045AE622916FCD009225C6 /* Image Size */,
 			);
 			path = "Pin Library";
 			sourceTree = "<group>";
@@ -202,22 +210,12 @@
 			path = "Pin Board Layout";
 			sourceTree = "<group>";
 		};
-		1D045AE622916FCD009225C6 /* Image Size */ = {
-			isa = PBXGroup;
-			children = (
-				1D045AEB22917050009225C6 /* ImagePreFetcher.swift */,
-				1D045AED229170E2009225C6 /* ImagePreFetchOperation.swift */,
-				1D045AEF22917361009225C6 /* ImagePreFetcherParser.swift */,
-			);
-			path = "Image Size";
-			sourceTree = "<group>";
-		};
 		1D045AE722916FE3009225C6 /* Image Loading */ = {
 			isa = PBXGroup;
 			children = (
+				1D045B082292F0D0009225C6 /* DiscardableImageItem.swift */,
 				1D045AFE2291CA98009225C6 /* NaImageDownloader.swift */,
 				1D045B002291DCC9009225C6 /* NaDownloadManager.swift */,
-				1D045B022291EC28009225C6 /* OperationsManager.swift */,
 				1D045B042291EEF7009225C6 /* NaImageOperation.swift */,
 			);
 			path = "Image Loading";
@@ -226,6 +224,12 @@
 		1D045AE822916FEA009225C6 /* Webservice Client */ = {
 			isa = PBXGroup;
 			children = (
+				1D045B062292F0D0009225C6 /* HTTPMethod.swift */,
+				1D045B072292F0D0009225C6 /* NaNetworking.swift */,
+				1D045B0C2292F13E009225C6 /* ParameterEncoding.swift */,
+				1D045B0E2292F1A2009225C6 /* ParameterEncoder.swift */,
+				1D045B10229323A1009225C6 /* NaUtils.swift */,
+				1D045B1222932934009225C6 /* NaNetworkOperation.swift */,
 			);
 			path = "Webservice Client";
 			sourceTree = "<group>";
@@ -260,6 +264,14 @@
 				1D045AFB22917E08009225C6 /* GetDashboardModel.swift */,
 			);
 			path = "Get Dashboard Model";
+			sourceTree = "<group>";
+		};
+		1D045B142293344D009225C6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1D045B1522933459009225C6 /* Helpers.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,18 +406,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D045AF022917361009225C6 /* ImagePreFetcherParser.swift in Sources */,
-				1D045AEE229170E2009225C6 /* ImagePreFetchOperation.swift in Sources */,
+				1D045B1622933459009225C6 /* Helpers.swift in Sources */,
+				1D045B0F2292F1A2009225C6 /* ParameterEncoder.swift in Sources */,
+				1D045B0A2292F0D0009225C6 /* NaNetworking.swift in Sources */,
 				1D045B012291DCC9009225C6 /* NaDownloadManager.swift in Sources */,
 				1D045AAF229167D3009225C6 /* AppDelegate.swift in Sources */,
 				1D045B052291EEF7009225C6 /* NaImageOperation.swift in Sources */,
 				1D045AF822917A3F009225C6 /* PinBoardCollectionViewCell.swift in Sources */,
+				1D045B11229323A1009225C6 /* NaUtils.swift in Sources */,
+				1D045B1322932934009225C6 /* NaNetworkOperation.swift in Sources */,
 				1D045AFF2291CA98009225C6 /* NaImageDownloader.swift in Sources */,
 				1D045AE222916C30009225C6 /* HomeViewController.swift in Sources */,
-				1D045B032291EC28009225C6 /* OperationsManager.swift in Sources */,
+				1D045B0B2292F0D0009225C6 /* DiscardableImageItem.swift in Sources */,
 				1D045AE522916C7A009225C6 /* PinboardCollectionViewLayout.swift in Sources */,
+				1D045B092292F0D0009225C6 /* HTTPMethod.swift in Sources */,
+				1D045B0D2292F13E009225C6 /* ParameterEncoding.swift in Sources */,
 				1D045AFC22917E08009225C6 /* GetDashboardModel.swift in Sources */,
-				1D045AEC22917050009225C6 /* ImagePreFetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

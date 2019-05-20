@@ -16,7 +16,7 @@ struct GetDashboardModel: Codable {
     let color: String?
     let likes: Int?
     let likedByUser: Bool?
-    let userDetails: [User]?
+    let userDetails: User?
     let urls: Urls?
     let categories: [Category]?
 }
@@ -104,7 +104,7 @@ extension Urls {
 }
 
 struct Category: Codable {
-    let id: String?
+    let id: Int?
     let title: String?
     let photoCount: Int?
     let links: Link?

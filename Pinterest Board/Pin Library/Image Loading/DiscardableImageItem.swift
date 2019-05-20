@@ -11,7 +11,7 @@ import UIKit
 open class DiscardableImageItem: NSObject, NSDiscardableContent {
     
     private(set) public var image: UIImage?
-    private(set) public var imageUrlString: UIImage?
+    private(set) public var imageUrlString: String?
     var accessCount: UInt = 0
     
     public init(image: UIImage, imageUrlString: String) {
