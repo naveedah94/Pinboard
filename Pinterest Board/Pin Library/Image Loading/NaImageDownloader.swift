@@ -24,7 +24,7 @@ extension UIImageView {
     }
     
     func loadImage(fromUrl url: String) {
-        let operation = NaDownloadManager.init().downloadImage(url) { (image, url, error) in
+        let operation = NaDownloadManager.shared.downloadImage(url) { (image, url, error) in
             if error == nil {
                 if let img = image {
                     self.setDownloadedImage(img)
