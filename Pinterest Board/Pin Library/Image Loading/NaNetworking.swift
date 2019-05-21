@@ -47,17 +47,6 @@ class NaNetworking {
             
             networkQueue.addOperation(operation)
         }
-        
-        
-//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-//            guard let data = data, error == nil else {
-//                print(error?.localizedDescription ?? "No data")
-//                self.completionHandler?(nil, response, error)
-//                return
-//            }
-//            self.completionHandler?(data, response, error)
-//        }
-//        task.resume()
     }
     
     public func getJson(from data: Data) -> Any? {

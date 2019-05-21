@@ -26,22 +26,24 @@ class NaImageDownloader {
         }
     }
     
-    func loadImage(fromUrl url: String, completion: @escaping NaDownloadHandler) {
+    func loadImage(fromUrl url: String, completion: @escaping NaDownloadHandler) -> Operation? {
         let operation = NaDownloadManager.shared.downloadImage(url, nil) { (image, url, error, indexPath) in
             DispatchQueue.main.async {
                  completion(image, url, error, nil)
             }
         }
         self.imageDownloadOperation = operation
+        return operation
     }
     
-    func loadImage(fromUrl url: String, atIndexPath indexPath: IndexPath, completion: @escaping NaDownloadHandler) {
+    func loadImage(fromUrl url: String, atIndexPath indexPath: IndexPath, completion: @escaping NaDownloadHandler) -> Operation? {
         let operation = NaDownloadManager.shared.downloadImage(url, indexPath) { (image, url, error, mIndexPath) in
             DispatchQueue.main.async {
                 completion(image, url, error, mIndexPath)
             }
         }
         self.imageDownloadOperation = operation
+        return operation
     }
     
     func cancelLoad() {

@@ -47,7 +47,18 @@ public class NaDownloadManager {
             if let operationList = (downloadQueue.operations as? [NaOperation])?.filter({$0.imageUrl.absoluteString == url.absoluteString && $0.isFinished == false && $0.isExecuting == true}), let operation = operationList.first {
                 print("In progress url: " + url.absoluteString)
                 operation.queuePriority = .veryHigh
-                return operation
+                
+                
+                let mOperation = NaOperation.init(url: URL.init(string: imageUrl)!, indexPath: indexPath)
+                mOperation.downloadHandler = { (image, url, error, indexPath) in
+                    if let mImage = image {
+                        self.addImageToCache(mImage, url.absoluteString as NSString)
+                    }
+                    self.completionHandler?(image, url, error, indexPath)
+                }
+                downloadQueue.addOperation(mOperation)
+                return mOperation
+                
             } else {
                 let operation = NaOperation.init(url: URL.init(string: imageUrl)!, indexPath: indexPath)
                 operation.downloadHandler = { (image, url, error, indexPath) in

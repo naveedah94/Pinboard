@@ -13,21 +13,30 @@ class HomeViewController: UIViewController {
     private var dashboardArray: [GetDashboardModel] = []
     @IBOutlet weak var collectionView: UICollectionView!
     
+    private let refreshControl = UIRefreshControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.setupRefreshControl()
         self.setupCollectionView()
         self.getBoardDataFromService()
     }
     
-    func getBoardDataFromService() {
+    func setupRefreshControl() {
+        refreshControl.addTarget(self, action: #selector(self.getBoardDataFromService), for: .valueChanged)
+    }
+    
+    @objc func getBoardDataFromService() {
         NaNetworking.shared.createRequest(nil, .get
         , .urlEncoding, "http://pastebin.com/raw/wgkJgazE") { (data, response, error) in
             if error == nil {
                 if let mData = data, let json = NaNetworking.shared.getJson(from: mData) {
                     print(json)
                     self.dashboardArray = try! JSONDecoder().decode([GetDashboardModel].self, from: mData)
+                    
+                    self.refreshControl.endRefreshing()
                     self.collectionView.reloadData()
                 } else {
                     print("Failed")
@@ -51,6 +60,7 @@ class HomeViewController: UIViewController {
         }
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        self.collectionView.refreshControl = self.refreshControl
     }
 }
 
