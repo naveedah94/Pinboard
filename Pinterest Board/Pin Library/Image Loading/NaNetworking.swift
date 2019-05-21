@@ -37,6 +37,13 @@ class NaNetworking {
         if let operationList = (networkQueue.operations as? [NaNetworkOperation])?.filter({$0.urlRequest.url!.absoluteString == url!.absoluteString && $0.isFinished == false && $0.isExecuting == true}), let operation = operationList.first {
             print("In progress url: " + url!.absoluteString)
             operation.queuePriority = .veryHigh
+            
+            let operation = NaNetworkOperation.init(urlRequest: request)
+            operation.completionHandler = { (data, response, error) in
+                DispatchQueue.main.async {
+                    self.completionHandler?(data, response, error)
+                }
+            }
         } else {
             let operation = NaNetworkOperation.init(urlRequest: request)
             operation.completionHandler = { (data, response, error) in

@@ -91,6 +91,20 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
     
+    //#LOADMORE FUNCTIONALITY *** COMMENTED OUT *** //
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        //UN COMMENT THIS TO ADD LOAD MORE FUNCTIONALITY
+        //JUST NEED TO ADJUST API URL
+        //ALONG WITH OFFSET VARIABLE OF SOME THING OF THAT SORT
+        //I AM LEAVING IT TO THIS FOR NOW ON ASSUMPTION THAT WHEN THE URL WILL BE GIVEN IT CAN BE IMPLEMENTED EASILY
+        
+//        if self.dashboardArray.count >= 10 {
+//            if indexPath.row == self.dashboardArray.count - 2 {
+//                self.getBoardDataFromService()
+//            }
+//        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, heightForItemAtIndexPath indexPath: IndexPath) -> CGFloat {
         let width = (self.collectionView.frame.size.width / 2) - 4
         
